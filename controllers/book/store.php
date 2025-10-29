@@ -6,10 +6,11 @@ $config = require_once 'config.php';
 
 
 $db = Database::getInstance($config['database']);
-
+$params =[];
 foreach($_POST as $key=> $value)
 {
   $$key = $value;
+  $params[]= $$key
 }
 // dd(get_defined_vars());
 
