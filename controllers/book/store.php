@@ -6,12 +6,18 @@ $config = require_once 'config.php';
 
 
 $db = Database::getInstance($config['database']);
-$name = $_POST['name'];
-$author = $_POST['author'];
-$description = $_POST['description'];
-$language = $_POST['language'];
-$year = $_POST['year'];
 
+foreach($_POST as $key=> $value)
+{
+  $$key = $value;
+}
+// dd(get_defined_vars());
+
+// $name = $_POST['name'];
+// $author = $_POST['author'];
+// $description = $_POST['description'];
+// $language = $_POST['language'];
+// $year = $_POST['year'];
 
 $query = "INSERT INTO books ( name, author, description, language, year) VALUES (?,?,?,?,?) ";
 $books = $db->query($query,[$name,
